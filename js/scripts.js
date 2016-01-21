@@ -6,6 +6,10 @@ var add = function(a,b) {
 	return a+b;
 }
 
+var subtract = function(a,b) {
+	return a-b;
+}
+
 //when number is pressed
 	$(".number").click(function() {
 		//update display
@@ -27,13 +31,15 @@ var add = function(a,b) {
 			case 'add':
 				operatorArr.push(add);
 				break;
+			case 'subtract':
+				operatorArr.push(subtract);
 		}
 	})
 
 //when equal is pressed
 	$("#equal").click(function() {
 		//get display value
-		var displayVal = $("#display").val();
+		var displayVal = parseInt($("#display").val());
 		//add value to numberArr
 		numberArr.push(displayVal);
 		//clear display value and number
@@ -52,6 +58,9 @@ var add = function(a,b) {
 		} 			
 		//display this final number as result of all operations
 		$("#display").val(result);
+		//clear the arrays
+		operatorArr = [];
+		numberArr = [];
 	})
 	
 
