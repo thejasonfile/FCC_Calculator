@@ -2,12 +2,40 @@ var numberArr = [];
 var operatorArr = [];
 var num = '';
 
+var getValue = function() {
+	if ($("#display").val() % 1 === 0) {
+			return parseInt($("#display").val());
+		} else {
+			return parseFloat($("#display").val());
+		}
+}
+
 var add = function(a,b) {
 	return a+b;
 }
 
 var subtract = function(a,b) {
 	return a-b;
+}
+
+var multiply = function(a,b) {
+	return a*b;
+}
+
+var divide = function(a,b) {
+	return a/b;
+}
+
+var percent = function(a,b) {
+	var result = divide(b, a);
+	$("#display").val(result);
+}
+
+var allClear = function() {
+	numberArr = [];
+	operatorArr = [];
+	num = '';
+	$("#display").val('');
 }
 
 //when number is pressed
@@ -19,10 +47,12 @@ var subtract = function(a,b) {
 	
 //when operator is pressed
 	$(".operator").click(function() {
-		//get display value and convert to interger
-		var displayVal = parseInt($("#display").val());
-		//add value to numberArr
-		numberArr.push(displayVal);
+		//get the display value
+		var displayVal = getValue();
+		//add value to numberArr unless it was the % button
+		if ($(this).attr('id') !== 'percent') {
+		numberArr.push(displayVal);			
+		}
 		//clear display value and number
 		$("#display").val('');
 		num = '';
@@ -33,13 +63,22 @@ var subtract = function(a,b) {
 				break;
 			case 'subtract':
 				operatorArr.push(subtract);
+				break;
+			case 'multiply':
+				operatorArr.push(multiply);
+				break;
+			case 'divide':
+				operatorArr.push(divide);
+				break;
+			case 'percent':
+				percent(displayVal, numberArr[numberArr.length-1]);		
 		}
 	})
 
 //when equal is pressed
 	$("#equal").click(function() {
-		//get display value
-		var displayVal = parseInt($("#display").val());
+		//get the display value
+		var displayVal = getValue();
 		//add value to numberArr
 		numberArr.push(displayVal);
 		//clear display value and number
@@ -62,5 +101,6 @@ var subtract = function(a,b) {
 		operatorArr = [];
 		numberArr = [];
 	})
-	
 
+//when AC is pressed
+	$("#allClear").click(allClear);
