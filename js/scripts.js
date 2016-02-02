@@ -27,15 +27,20 @@ var divide = function(a,b) {
 }
 
 var percent = function(a,b) {
-	var result = divide(b, a);
+	var decimal = b / 100;
+	result = a * decimal;
 	$("#display").val(result);
 }
 
 var allClear = function() {
 	numberArr = [];
 	operatorArr = [];
-	num = '';
+	displayClear();
+}
+
+var displayClear = function() {
 	$("#display").val('');
+	num = '';
 }
 
 //when number is pressed
@@ -54,8 +59,7 @@ var allClear = function() {
 		numberArr.push(displayVal);			
 		}
 		//clear display value and number
-		$("#display").val('');
-		num = '';
+		displayClear();
 		//add operator to operatorArr
 		switch ($(this).attr('id')) {
 			case 'add':
@@ -82,8 +86,7 @@ var allClear = function() {
 		//add value to numberArr
 		numberArr.push(displayVal);
 		//clear display value and number
-		$("#display").val('');
-		num = '';
+		displayClear();
 		//repeat performing first operation on first two numbers until only one number left
 		while (numberArr.length > 1) {
 			//perform first operator in operatorArr on first two numbers in numberArr
@@ -104,3 +107,6 @@ var allClear = function() {
 
 //when AC is pressed
 	$("#allClear").click(allClear);
+
+//when CE is pressed
+	$("#clearEntry").click(displayClear);

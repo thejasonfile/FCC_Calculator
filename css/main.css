@@ -1,8 +1,38 @@
-#calculator {
-	margin: 0 auto;
-	width: 40%;
-}
-
 button {
 	padding: 1em;
+	border-radius: 40%;
+	margin: 0.4em;
+	border: none;
+	background-color: black;
+	color: green;
+	font-size: 1.8em;
+}
+
+#buttons,
+#row {
+	display: flex;
+}
+
+#buttons {
+	flex-direction: column;
+}
+
+#row {
+	justify-content: center;
+}
+
+#calculator {
+	margin: 0 auto;
+	width: 30%;
+	text-align: center;
+	background-color: green;
+	border-radius: 5px;
+	padding: 0.4em 0;
+}
+
+#display {
+	padding: 0.4em;
+	font-size: 2em;
+	text-align: right;
+	margin-bottom: 0.4em;
 }
