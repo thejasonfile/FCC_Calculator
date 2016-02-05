@@ -1,3 +1,9 @@
+body {
+	background-image: url("../images/background.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
 button {
 	padding: 1em;
 	border-radius: 40%;
@@ -8,8 +14,12 @@ button {
 	font-size: 1.8em;
 }
 
+#paper_logo {
+	padding-left: 0;
+}
+
 #buttons,
-#row {
+.row {
 	display: flex;
 }
 
@@ -17,13 +27,13 @@ button {
 	flex-direction: column;
 }
 
-#row {
+.row {
 	justify-content: center;
 }
 
 #calculator {
-	margin: 0 auto;
-	width: 30%;
+	margin: 20% auto;
+	max-width: 30%;
 	text-align: center;
 	background-color: green;
 	border-radius: 5px;
